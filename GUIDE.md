@@ -39,7 +39,7 @@ flowchart TD
 - Internet connection for package install, map tiles, geocoding, and live routing
 - Optional OpenRouteService API key for live routing
 
-## 5. Demo modes
+## 4. Demo modes
 
 ### Demo mode (no API key required)
 
@@ -55,7 +55,7 @@ Live route output includes actual geometry and service-reported distance/duratio
 
 After a successful live request, the route responses are saved in local storage. If a subsequent live request fails, the app attempts to load those saved responses. A cached route does not guarantee offline map tiles; tiles still come from OpenStreetMap servers. If the network is entirely down, route geometry and cards can still load but the base map may be blank. For a fully offline demo, prepare a screen recording or locally hosted map tiles.
 
-## 7. Known limitations and integration risks
+## 5. Known limitations and integration risks
 
 1. **No live safety data adapter yet.** OpenRouteService supplies routes, not the lighting or footfall evidence needed by the product thesis.
 2. **Coverage is provisional.** Demo percentages are fixtures and the current demo's overall coverage is a weighted average of factor-level fixture percentages—not true segment-by-segment route-length coverage. The live routing adapter supplies no safety attributes. To make the assessment UI demonstrable, the app attaches simulated coverage profiles. These values are fictional and do not indicate actual lighting, footfall, road conditions, or safety. Before any real-world use, replace the simulation with a verified data source and calculate per-factor coverage by route length.
@@ -68,7 +68,7 @@ After a successful live request, the route responses are saved in local storage.
 9. **Time control is a UI preference only.** No live time-dependent pedestrian activity feed is connected.
 10. **No validated safety score.** The assessment is a transparent heuristic for demonstration, not a scientific personal-safety prediction.
 
-## 8. Recommended next implementation steps
+## 6. Recommended next implementation steps
 
 1. Verify the routing flow and cache fallback.
 2. Choose a small Jaipur pilot area and inspect actual OSM attribute coverage before promising the 70% threshold is achievable.
