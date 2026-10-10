@@ -39,41 +39,6 @@ flowchart TD
 - Internet connection for package install, map tiles, geocoding, and live routing
 - Optional OpenRouteService API key for live routing
 
-## 4. Start the project
-
-1. Extract the SafeRoute project ZIP.
-2. Open a terminal in the extracted `saferoute` directory.
-3. Install dependencies:
-
-   ```bash
-   npm install
-   ```
-
-4. Optional live routing setup:
-
-   ```bash
-   cp .env.example .env.local
-   ```
-
-   Open `.env.local` and replace the placeholder with your own OpenRouteService API key.
-
-   **Security warning:** Vite exposes `VITE_*` variables in the browser bundle. This is acceptable only for a disposable hackathon key with usage limits. For any deployed or production version, move API calls behind a server-side proxy and store the key server-side.
-
-5. Start the development server:
-
-   ```bash
-   npm run dev
-   ```
-
-6. Open the local URL printed by Vite (usually `http://localhost:5173`).
-
-7. For a production build check:
-
-   ```bash
-   npm run build
-   npm run preview
-   ```
-
 ## 5. Demo modes
 
 ### Demo mode (no API key required)
@@ -89,21 +54,6 @@ Live route output includes actual geometry and service-reported distance/duratio
 ### Cached fallback
 
 After a successful live request, the route responses are saved in local storage. If a subsequent live request fails, the app attempts to load those saved responses. A cached route does not guarantee offline map tiles; tiles still come from OpenStreetMap servers. If the network is entirely down, route geometry and cards can still load but the base map may be blank. For a fully offline demo, prepare a screen recording or locally hosted map tiles.
-
-## 6. Test checklist before presenting
-
-- [ ] `npm install` completes.
-- [ ] `npm run build` succeeds.
-- [ ] `npm test` passes the scoring and unknown-data tests.
-- [ ] Demo mode renders three routes and the sample hazard is labeled demonstration data.
-- [ ] Selecting route cards changes the highlighted route.
-- [ ] Route preference sliders update the provisional assessment.
-- [ ] Add a hazard pin and verify the UI marks it as unverified.
-- [ ] With a valid key, test one real Jaipur route and verify returned duration/distance.
-- [ ] Trigger a failed live request after a successful live request and verify cached fallback.
-- [ ] Disable network and confirm route cards remain visible; remember map tiles may not load.
-- [ ] Check the UI at mobile and desktop widths.
-- [ ] Clearly disclose that lighting, road, and activity percentages are simulated demo data. Never claim these values are verified lighting/footfall data or evidence that a live route is safe.
 
 ## 7. Known limitations and integration risks
 
@@ -126,7 +76,3 @@ After a successful live request, the route responses are saved in local storage.
 4. Calculate factor-specific coverage by route length and segment, not by counting tags.
 5. Test hazard-aware rerouting only after core routing and cached fallback pass.
 6. Record a short backup demo after all critical flows work.
-
-## 9. Judge-friendly explanation
-
-“SafeRoute does not claim to know which street is perfectly safe. It compares walking routes using the evidence currently available, tells users what is known and missing, highlights reported hazards, and avoids treating missing data as proof of danger. We begin with a campus pilot and can help institutions identify gaps in their local walking environment.”
